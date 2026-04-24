@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthy Buddy | Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body { 
+    font-family:'Poppins',sans-serif; 
+    margin:0; 
+    background:#eef2ff; 
+    color:#333;
+}
+
+header.navbar { 
+    display:flex; 
+    justify-content:space-between; 
+    padding:15px 20px; 
+    background:#1f1f2e; 
+    color:#fff; 
+}
+
+.hero { 
+    padding:40px; 
+    background:#f0f2ff; 
+}
+
+.dashboard { 
+    display:grid; 
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); 
+    gap:20px; 
+    padding:40px;
+}
+
+.dashboard-card { 
+    background:#fff; 
+    padding:20px; 
+    border-radius:10px; 
+    box-shadow:0 4px 10px rgba(0,0,0,0.1); 
+}
+
+h3 { color:#4f46e5; }
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <h1>❤️ Healthy Buddy</h1>
+    <nav>
+        <a href="home.html">Home</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h2>Your Health Dashboard</h2>
+    <p>Visualize your AI predictions and health insights.</p>
+</section>
+
+<!-- DASHBOARD -->
+<section class="dashboard">
+
+    <!-- HEALTH -->
+    <div class="dashboard-card">
+        <h3>🩺 Health Risk</h3>
+        <canvas id="healthChart"></canvas>
+        <p>Health data will appear here.</p>
+    </div>
+
+    <!-- MENTAL -->
+    <div class="dashboard-card">
+        <h3>🧘 Mental Health</h3>
+        <canvas id="mentalChart"></canvas>
+        <p>Mental data will appear here.</p>
+    </div>
+
+    <!-- AI -->
+    <div class="dashboard-card">
+        <h3>🤖 AI Prediction</h3>
+        <div id="aiPrediction"></div>
+    </div>
+
+</section>
+
+<script>
+
+/* ===== SAMPLE SCORES ===== */
+let healthRiskScore = 5;
+let mentalHealthScore = 6;
+
+/* ===== CHARTS ===== */
+new Chart(document.getElementById('healthChart'), {
+    type:'doughnut',
+    data:{
+        labels:['Score','Remaining'],
+        datasets:[{ data:[healthRiskScore,10-healthRiskScore] }]
+    }
+});
+
+new Chart(document.getElementById('mentalChart'), {
+    type:'doughnut',
+    data:{
+        labels:['Score','Remaining'],
+        datasets:[{ data:[mentalHealthScore,10-mentalHealthScore] }]
+    }
+});
+
+/* ===== LOAD AI DATA ===== */
+let aiHistory = JSON.parse(localStorage.getItem("aiPredictions"));
+
+/* ===== FIX: AUTO DEMO DATA ===== */
+if (!aiHistory || aiHistory.length === 0) {
+    aiHistory = [
+        { disease:"Healthy", confidence:95, date:"Demo" },
+        { disease:"Fever", confidence:78, date:"Demo" },
+        { disease:"Hypertension", confidence:65, date:"Demo" }
+    ];
+    localStorage.setItem("aiPredictions", JSON.stringify(aiHistory));
+}
+
+/* ===== SHOW DATA ===== */
+const aiBox = document.getElementById("aiPrediction");
+
+let html = "<b>Recent Predictions:</b><br><br>";
+
+aiHistory.slice(-5).reverse().forEach(item => {
+    html += `
+    🧾 <b>${item.disease}</b> (${item.confidence}%)<br>
+    <small>${item.date}</small><br><br>
+    `;
+});
+
+aiBox.innerHTML = html;
+
+/* ===== GRAPH ===== */
+const canvas = document.createElement("canvas");
+aiBox.appendChild(canvas);
+
+new Chart(canvas, {
+    type:"bar",
+    data:{
+        labels: aiHistory.map(x => x.disease),
+        datasets:[{
+            label:"Confidence %",
+            data: aiHistory.map(x => x.confidence)
+        }]
+    },
+    options:{ responsive:true }
+});
+
+/* ===== SAVE FUNCTION (USE IN PREDICTION PAGE) ===== */
+function savePrediction(disease, confidence) {
+
+    let history = JSON.parse(localStorage.getItem("aiPredictions")) || [];
+
+    history.push({
+        disease: disease,
+        confidence: confidence,
+        date: new Date().toLocaleString()
+    });
+
+    localStorage.setItem("aiPredictions", JSON.stringify(history));
+}
+
+</script>
+
+<footer style="background:#1f1f2e;color:#fff;text-align:center;padding:15px;">
+© 2026 Healthy Buddy
+</footer>
+
+</body>
+</html>

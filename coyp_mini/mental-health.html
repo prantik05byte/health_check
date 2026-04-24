@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health | Healthy Buddy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+/* ================= Global Styles ================= */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #eef2ff; /* Home page primary background */
+    color: #333;
+}
+
+h2, h3, h4 {
+    margin: 0 0 15px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #4f46e5; /* Brand purple */
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #6366f1; /* Secondary accent */
+}
+
+/* ================= Navbar ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #4f46e5;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar h1 {
+    color: #4f46e5;
+    font-size: 1.8rem;
+}
+
+.navbar nav a {
+    margin-left: 20px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.navbar .download-btn {
+    background: linear-gradient(45deg, #4f46e5, #6366f1);
+    color: #fff;
+}
+
+.navbar .download-btn:hover {
+    background: linear-gradient(45deg, #6366f1, #4f46e5);
+}
+
+/* ================= Mental Health Section ================= */
+.mental-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.mental-section h2 {
+    color: #4f46e5;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.mental-section p {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.form-grid div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-grid label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-grid input, .form-grid select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    background-color: #fafafa;
+}
+
+.form-grid input:focus, .form-grid select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 8px rgba(79,70,229,0.3);
+}
+
+/* Generate Button */
+.form-grid button {
+    grid-column: 1 / -1;
+    padding: 12px 0;
+    background: linear-gradient(45deg, #4f46e5, #6366f1);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #fff;
+}
+
+.form-grid button:hover {
+    background: linear-gradient(45deg, #6366f1, #4f46e5);
+}
+
+/* ================= Result Card ================= */
+.result-card {
+    display: none;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}
+
+.result-card h3 {
+    text-align: center;
+    color: #4f46e5;
+    margin-bottom: 20px;
+}
+
+/* Result Boxes */
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.result-box {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(79,70,229,0.1);
+    font-size: 0.95rem;
+}
+
+/* Awareness & Routine */
+.section-box {
+    background-color: #fafafa;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(79,70,229,0.1);
+}
+
+.section-box h4 {
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+.section-box ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.section-box ul li {
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* Video Box */
+#videoContent iframe {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(79,70,229,0.2);
+}
+
+/* ================= Responsive ================= */
+@media screen and (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== FOOTER ===== */
+:root {
+    --primary-color: #4f46e5; /* Brand purple */
+    --secondary-color: #6366f1; /* Accent purple */
+    --light-bg: #eef2ff; /* Soft background */
+    --light-bg2: #f8fafc; /* Section background */
+    --dark-bg: #1f1f2e; /* Navbar/Footer dark */
+    --text-color: #333;
+    --btn-hover: #6366f1;
+    --card-shadow: rgba(79,70,229,0.1);
+}
+.footer {
+    background-color: var(--dark-bg);
+    color: #e0e0e0;
+    padding: 50px 30px 20px 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-box {
+    flex: 1 1 250px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.footer-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.footer-box p {
+    line-height: 1.6;
+}
+
+.footer-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-box ul li {
+    margin-bottom: 8px;
+}
+
+.footer-box ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* SOCIAL ICONS */
+.social-icons a {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-right: 12px;
+    color: #e0e0e0;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+/* NEWSLETTER */
+.newsletter-input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    margin: 10px 0 5px 0;
+}
+
+.newsletter-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter-btn:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+/* COPYRIGHT */
+.footer-bottom {
+    border-top: 1px solid var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom a {
+    color: var(--secondary-color);
+    margin-left: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: var(--primary-color);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-box {
+        flex: 1 1 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+    <h1>❤️ Healthy Buddy</h1>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="#" class="download-btn" onclick="downloadMentalPDF()">📄 Report</a>
+    </nav>
+</header>
+
+<!-- ===== MENTAL HEALTH SECTION ===== -->
+<section class="mental-section">
+<h2>🧠 Mental Health Assessment</h2>
+<p>Measure your stress, sleep, mood, and anxiety for personalized insights</p>
+
+<div class="form-grid">
+    <div>
+        <label for="stress">Stress Level</label>
+        <select id="stress">
+            <option value="">Select Stress</option>
+            <option value="3">Low</option>
+            <option value="6">Moderate</option>
+            <option value="9">High</option>
+        </select>
+    </div>
+    <div>
+        <label for="sleep">Sleep Hours</label>
+        <input type="number" id="sleep" placeholder="Hours per day">
+    </div>
+    <div>
+        <label for="mood">Mood Level</label>
+        <select id="mood">
+            <option value="">Select Mood</option>
+            <option value="3">Low</option>
+            <option value="6">Moderate</option>
+            <option value="9">High</option>
+        </select>
+    </div>
+    <div>
+        <label for="anxiety">Anxiety Level</label>
+        <select id="anxiety">
+            <option value="">Select Anxiety</option>
+            <option value="3">Low</option>
+            <option value="6">Moderate</option>
+            <option value="9">High</option>
+        </select>
+    </div>
+    <div>
+        <button onclick="generateMentalReport()">Generate Report</button>
+    </div>
+</div>
+
+<!-- ===== RESULT CARD ===== -->
+<div class="result-card" id="mentalResultCard">
+<h3>Your Mental Health Report</h3>
+<div class="result-grid">
+    <div class="result-box" id="mentalScoreBox">Score</div>
+    <div class="result-box" id="stressBox">Stress</div>
+    <div class="result-box" id="sleepBox">Sleep</div>
+    <div class="result-box" id="moodBox">Mood</div>
+    <div class="result-box" id="anxietyBox">Anxiety</div>
+    <div class="result-box" id="levelBox">Level</div>
+</div>
+
+<!-- ===== Awareness, Routine & Video Section ===== -->
+<div id="awarenessContent"></div>
+<div id="routineContent"></div>
+<div id="videoContent" style="margin-top:15px;"></div>
+
+</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-box">
+            <h2 class="footer-logo">❤️ Healthy Buddy</h2>
+            <p>Your AI Health Assistant providing personalized health insights, diet planning, and mental wellness tracking. Stay healthy, stay informed!</p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="health-risk.html">Health Risk</a></li>
+                <li><a href="symptom.html">AI Prediction</a></li>
+                <li><a href="mental-health.html">Mental Health</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#" target="_blank">🌐</a>
+                <a href="#" target="_blank">🐦</a>
+                <a href="#" target="_blank">📸</a>
+                <a href="#" target="_blank">💼</a>
+            </div>
+            <p>Subscribe for updates:</p>
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-btn">Subscribe</button>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Healthy Buddy | All Rights Reserved</p>
+        <div>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+// ===== Generate Mental Health Report =====
+function generateMentalReport(){
+    let stress = parseInt(document.getElementById("stress").value);
+    let sleep = parseFloat(document.getElementById("sleep").value);
+    let mood = parseInt(document.getElementById("mood").value);
+    let anxiety = parseInt(document.getElementById("anxiety").value);
+
+    if(!stress || !sleep || !mood || !anxiety){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let score = ((10-stress) + sleep/2 + mood + (10-anxiety))/4;
+    score = score.toFixed(1);
+
+    // Determine Risk Level
+    let level="", color="", tips="", awareness="", routine="", video="";
+    if(score>=7){
+        level="Low Risk"; color="green"; tips="Maintain healthy lifestyle!";
+        awareness=`<div class="section-box">
+        <h4>✅ Awareness</h4>
+        <p>Good mental health! Maintain your habits.</p>
+        <ul>
+        <li>Continue meditation & breathing exercises</li>
+        <li>Balanced sleep schedule</li>
+        <li>Engage in light physical activity</li>
+        <li>Play mental wellness games: <a href="https://www.cognifit.com" target="_blank">Cognifit</a></li>
+        <li>Watch calming videos: <a href="https://www.youtube.com/results?search_query=mental+wellness" target="_blank">YouTube</a></li>
+        </ul></div>`;
+        routine=`<div class="section-box">
+        <h4>📅 Daily Routine</h4>
+        <ul>
+        <li>Morning walk or light exercise</li>
+        <li>Maintain sleep 7-8 hours</li>
+        <li>Practice gratitude journaling</li>
+        </ul></div>`;
+        video=`<iframe width="100%" height="200" src="https://www.youtube.com/embed/2pLT-olgUJs" frameborder="0"></iframe>`;
+    }
+    else if(score>=4){
+        level="Medium Risk"; color="orange"; tips="Lifestyle improvements needed!";
+        awareness=`<div class="section-box">
+        <h4>⚡ Awareness</h4>
+        <p>Moderate risk. Adopt healthy habits immediately.</p>
+        <ul>
+        <li>Meditation & mindfulness daily</li>
+        <li>Limit screen time before bed</li>
+        <li>Regular exercise 3-4 times/week</li>
+        <li>Engage in stress-relieving activities</li>
+        </ul></div>`;
+        routine=`<div class="section-box">
+        <h4>📅 Daily Routine</h4>
+        <ul>
+        <li>Morning walk 30 min</li>
+        <li>Light exercise or yoga</li>
+        <li>Sleep 7-8 hours</li>
+        </ul></div>`;
+        video=`<iframe width="100%" height="200" src="https://www.youtube.com/embed/ml6cT4AZdqI" frameborder="0"></iframe>`;
+    }else{
+        level="High Risk"; color="red"; tips="Immediate action needed!";
+        awareness=`<div class="section-box">
+        <h4>⚠️ Awareness</h4>
+        <p>High risk detected! Consider professional guidance.</p>
+        <ul>
+        <li>Seek professional counseling</li>
+        <li>Practice daily meditation</li>
+        <li>Light physical activity</li>
+        <li>Play mental wellness games: <a href="https://www.cognifit.com" target="_blank">Cognifit</a></li>
+        <li>Watch calming videos: <a href="https://www.youtube.com/results?search_query=mental+wellness" target="_blank">YouTube</a></li>
+        </ul></div>`;
+        routine=`<div class="section-box">
+        <h4>📅 Daily Routine</h4>
+        <ul>
+        <li>Meditation & deep breathing</li>
+        <li>Reduce screen time & stress</li>
+        <li>7-8 hours sleep daily</li>
+        </ul></div>`;
+        video=`<iframe width="100%" height="200" src="https://www.youtube.com/embed/UBMk30rjy0o" frameborder="0"></iframe>`;
+    }
+
+    // Display Results
+    document.getElementById("mentalResultCard").style.display="block";
+    document.getElementById("mentalScoreBox").innerHTML="<strong>Mental Score:</strong> "+score+"/10";
+    document.getElementById("stressBox").innerHTML="<strong>Stress Level:</strong> "+stress;
+    document.getElementById("sleepBox").innerHTML="<strong>Sleep Hours:</strong> "+sleep;
+    document.getElementById("moodBox").innerHTML="<strong>Mood Level:</strong> "+mood;
+    document.getElementById("anxietyBox").innerHTML="<strong>Anxiety Level:</strong> "+anxiety;
+    document.getElementById("levelBox").innerHTML="<strong>Risk Level:</strong> <span style='color:"+color+"'>"+level+"</span>";
+
+    document.getElementById("awarenessContent").innerHTML=awareness;
+    document.getElementById("routineContent").innerHTML=routine;
+    document.getElementById("videoContent").innerHTML=video;
+}
+
+// ===== PDF Download =====
+function downloadMentalPDF(){
+    const { jsPDF } = window.jspdf;
+    let doc = new jsPDF();
+    let stress = document.getElementById("stress").value;
+    let sleep = document.getElementById("sleep").value;
+    let mood = document.getElementById("mood").value;
+    let anxiety = document.getElementById("anxiety").value;
+    let score = document.getElementById("mentalScoreBox").innerText.split(":")[1];
+    let level = document.getElementById("levelBox").innerText.split(":")[1];
+
+    doc.setFontSize(18);
+    doc.text("🧠 Mental Health Report", 20, 20);
+    doc.setFontSize(12);
+    doc.text("Stress Level: " + stress, 20, 40);
+    doc.text("Sleep Hours: " + sleep, 20, 50);
+    doc.text("Mood Level: " + mood, 20, 60);
+    doc.text("Anxiety Level: " + anxiety, 20, 70);
+    doc.text("Mental Score: " + score, 20, 80);
+    doc.text("Risk Level: " + level, 20, 90);
+    doc.text("Suggestions:", 20, 100);
+    doc.text("• Maintain meditation & breathing exercises.", 25, 110);
+    doc.text("• Balanced sleep & stress management.", 25, 120);
+    doc.text("• Light physical activity daily.", 25, 130);
+    doc.text("• Play mental wellness games (Cognifit).", 25, 140);
+    doc.text("• Watch calming videos (YouTube Mental Wellness).", 25, 150);
+
+    doc.save("Mental_Health_Report.pdf");
+}
+</script>
+
+</body>
+</html>

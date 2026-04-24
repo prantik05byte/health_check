@@ -1,0 +1,246 @@
+:root {
+    --primary-color: #ff4d6d;
+    --secondary-color: #ffb84d;
+    --light-bg: #ffe6eb;
+    --light-bg2: #fff2e6;
+    --dark-bg: #1e1e1e;
+    --text-color: #333;
+    --btn-hover: #e03b55;
+    --card-shadow: rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: var(--text-color);
+}
+
+/* ==================== NAVBAR ==================== */
+header.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--dark-bg);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header.navbar h1.logo {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+header.navbar nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header.navbar nav a:hover {
+    color: var(--primary-color);
+}
+
+header.navbar a.btn, header.navbar a.download-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+header.navbar a.btn:hover,
+header.navbar a.download-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+/* ==================== ABOUT SECTION ==================== */
+.about-section {
+    padding: 50px 30px;
+    background-color: var(--light-bg2);
+}
+
+.about-section h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.about-section p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.section-box {
+    background-color: var(--light-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px var(--card-shadow);
+    transition: transform 0.3s;
+}
+
+.section-box:hover {
+    transform: translateY(-5px);
+}
+
+.section-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* ==================== TERMS & PRIVACY ==================== */
+.terms-section {
+    padding: 50px 30px;
+}
+
+.terms-section h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.terms-section ul {
+    list-style-type: disc;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.terms-section li {
+    margin-bottom: 10px;
+}
+
+/* ==================== FOOTER ==================== */
+
+.footer {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 50px 30px 20px 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-box {
+    flex: 1 1 250px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    color: #ff4d6d;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.footer-box h3 {
+    color: #ff4d6d;
+    margin-bottom: 12px;
+}
+
+.footer-box p {
+    line-height: 1.6;
+}
+
+.footer-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-box ul li {
+    margin-bottom: 8px;
+}
+
+.footer-box ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+    color: #ffb84d;
+}
+
+/* SOCIAL ICONS */
+.social-icons a {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-right: 12px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ff4d6d;
+}
+
+/* NEWSLETTER */
+.newsletter-input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    margin: 10px 0 5px 0;
+}
+
+.newsletter-btn {
+    background-color: #ff4d6d;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter-btn:hover {
+    background-color: #e03b55;
+}
+
+/* COPYRIGHT */
+.footer-bottom {
+    border-top: 1px solid #ff4d6d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom a {
+    color: #ffb84d;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: #ff4d6d;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-box {
+        flex: 1 1 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Healthy Buddy | AI Health System</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="home.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <h1 class="logo">❤️ Healthy Buddy</h1>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="#features">Health Risk</a>
+        <a href="ai-prediction.html">AI Prediction</a>
+        <a href="#diet">Diet Plan</a>
+        <a href="#" class="download-btn" onclick="downloadReport()">
+        📄 Report
+    </a>
+    </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+
+    <div class="hero-text">
+        <h2>Your AI Health Assistant</h2>
+        <p>
+            Monitor your health, predict risks, and get personalized
+            recommendations using AI-powered insights.
+        </p>
+
+        <a href="ai-prediction.html" class="primary-btn">Get Started</a>
+    </div>
+
+    <div class="hero-img">
+        <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="health">
+    </div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section id="features" class="features">
+
+<h2>Our Features</h2>
+<p class="subtitle">Smart tools to track and improve your health</p>
+
+<div class="card-container">
+
+<div class="card">
+    <h3>🩺 Health Risk</h3>
+    <p>Analyze BMI, BP & lifestyle risks instantly.</p>
+    <a href="health-risk.html">Start →</a>
+</div>
+
+<div class="card">
+    <h3>🧠 AI Prediction</h3>
+    <p>Predict diseases based on symptoms.</p>
+    <a href="ai-prediction.html">Check →</a>
+</div>
+
+<div class="card">
+    <h3>🧘 Mental Health</h3>
+    <p>Track stress, mood & sleep patterns.</p>
+    <a href="mental-health.html">Explore →</a>
+</div>
+
+<div class="card">
+    <h3>📊 Dashboard</h3>
+    <p>Visualize data with graphs & analytics.</p>
+    <a href="dashboard.html">View →</a>
+</div>
+
+</div>
+</section>
+
+<!-- ================= AI DIET ================= -->
+ <!--ai-diet section-->
+
+<section id="diet" class="ai-diet-section">
+
+<h2>🥗 AI Diet & Fitness Recommendation</h2>
+<p>Smart calorie & macro planning based on your body metrics</p>
+
+<div class="form-grid">
+
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input type="number" id="height" placeholder="Height (cm)">
+<input type="number" id="age" placeholder="Age">
+
+<select id="gender">
+<option value="">Select Gender</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+</select>
+
+<select id="goal">
+<option value="">Select Goal</option>
+<option value="loss">Weight Loss</option>
+<option value="maintain">Maintain</option>
+<option value="gain">Weight Gain</option>
+</select>
+
+<select id="activity">
+<option value="">Activity Level</option>
+<option value="1.2">Sedentary</option>
+<option value="1.375">Lightly Active</option>
+<option value="1.55">Moderately Active</option>
+<option value="1.725">Very Active</option>
+</select>
+
+<button onclick="generatePlan()">Generate AI Plan</button>
+
+</div>
+
+<div class="result-card" id="resultCard">
+<h3>Your Personalized Plan</h3>
+
+<div class="result-grid">
+
+<div class="result-box" id="bmiBox">BMI</div>
+<div class="result-box" id="calorieBox">Calories</div>
+<div class="result-box" id="macroBox">acroBox</div>
+<div class="result-box" id="dietBox">dietBox</div>
+<div class="result-box" id="workoutBox">workoutBox</div>
+<div class="result-box" id="waterBox">waterBox</div>
+
+</div>
+</div>
+
+</section>
+<!-- ================= TESTIMONIAL ================= -->
+<section class="testimonials">
+
+<h2>What Users Say</h2>
+
+<div class="cards">
+
+<div class="test-card">
+<p>"Amazing health insights!"</p>
+<h4>- Sarah</h4>
+</div>
+
+<div class="test-card">
+<p>"Simple & powerful system."</p>
+<h4>- Michael</h4>
+</div>
+
+<div class="test-card">
+<p>"Highly recommended."</p>
+<h4>- Priya</h4>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-box">
+            <h2 class="footer-logo">❤️ Healthy Buddy</h2>
+            <p>Your AI Health Assistant providing personalized health insights, diet planning, and mental wellness tracking. Stay healthy, stay informed!</p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="health-risk.html">Health Risk</a></li>
+                <li><a href="symptom.html">AI Prediction</a></li>
+                <li><a href="mental-health.html">Mental Health</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.google.com/" target="_blank">🌐</a>
+                <a href="https://x.com/twitt_login?lang=en" target="_blank">🐦</a>
+                <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank">📸</a>
+                <a href="https://www.facebook.com/" target="_blank">💼</a>
+            </div>
+            
+            <p>Subscribe for updates:</p>
+<input type="email" value="example@gmail.com" class="newsletter-input">
+<button class="newsletter-btn">Subscribe</button>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Healthy Buddy | All Rights Reserved</p>
+        <div>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ================= JS ================= -->
+ <!-- AI Diet & Fitness JS -->
+  <script>
+function generatePlan(){
+
+let weight=parseFloat(document.getElementById("weight").value);
+let height=parseFloat(document.getElementById("height").value);
+let age=parseInt(document.getElementById("age").value);
+let gender=document.getElementById("gender").value;
+let goal=document.getElementById("goal").value;
+let activity=parseFloat(document.getElementById("activity").value);
+
+if(!weight || !height || !age || !gender || !goal || !activity){
+    alert("Please fill all fields");
+    return;
+}
+
+/* BMI */
+let bmi=weight/((height/100)*(height/100));
+bmi=bmi.toFixed(2);
+
+/* BMR */
+let bmr;
+if(gender==="male"){
+    bmr=10*weight+6.25*height-5*age+5;
+}else{
+    bmr=10*weight+6.25*height-5*age-161;
+}
+
+let calories=bmr*activity;
+
+if(goal==="loss") calories-=500;
+if(goal==="gain") calories+=400;
+
+calories=Math.round(calories);
+
+/* Macros */
+let protein=Math.round(weight*2);
+let fats=Math.round((calories*0.25)/9);
+let carbs=Math.round((calories-(protein*4+fats*9))/4);
+
+/* Diet */
+let diet;
+if(goal==="loss"){
+    diet="High protein diet, oats, boiled eggs, grilled chicken, salad, fruits.";
+}else if(goal==="gain"){
+    diet="High calorie diet, rice, peanut butter, milk, banana shake, eggs.";
+}else{
+    diet="Balanced diet with vegetables, lean protein, complex carbs.";
+}
+
+/* Workout */
+let workout;
+if(goal==="loss"){
+    workout="30 min cardio + 30 min strength training.";
+}else if(goal==="gain"){
+    workout="Heavy strength training 5 days/week.";
+}else{
+    workout="Light strength + 20 min cardio.";
+}
+
+/* Water */
+let water=(weight*35/1000).toFixed(2);
+
+/* DISPLAY (YOUR STYLE KEPT SAME) */
+document.getElementById("resultCard").style.display="block";
+
+document.getElementById("bmiBox").innerHTML =
+"<strong>BMI:</strong> "+bmi;
+
+document.getElementById("calorieBox").innerHTML =
+"<strong>Daily Calories:</strong> "+calories+" kcal";
+
+document.getElementById("macroBox").innerHTML =
+"<strong>Macros:</strong><br>Protein: "+protein+"g<br>Carbs: "+carbs+"g<br>Fats: "+fats+"g";
+
+document.getElementById("dietBox").innerHTML =
+"<strong>Diet Plan:</strong><br>"+diet;
+
+document.getElementById("workoutBox").innerHTML =
+"<strong>Workout Plan:</strong><br>"+workout;
+
+document.getElementById("waterBox").innerHTML =
+"<strong>Water Intake:</strong><br>"+water+" Liters/day";
+
+/* 🔥 SAVE EXACT SAME FORMAT (IMPORTANT) */
+localStorage.setItem("bmi", "BMI: "+bmi);
+localStorage.setItem("calories", "Daily Calories: "+calories+" kcal");
+localStorage.setItem("macro", "Protein: "+protein+"g, Carbs: "+carbs+"g, Fats: "+fats+"g");
+localStorage.setItem("diet", diet);
+localStorage.setItem("workout", workout);
+localStorage.setItem("water", water+" Liters/day");
+}
+
+
+</script>
+
+<!-- Report Download JS -->
+ <script>
+function downloadReport(){
+
+/* Diet & Fitness Report  download*/
+const { jsPDF } = window.jspdf;
+let doc = new jsPDF();
+
+/* GET DATA */
+let bmi = localStorage.getItem("bmi") || "Not calculated";
+let calories = localStorage.getItem("calories") || "Not calculated";
+let macro = localStorage.getItem("macro") || "Not available";
+let diet = localStorage.getItem("diet") || "Not available";
+let workout = localStorage.getItem("workout") || "Not available";
+let water = localStorage.getItem("water") || "Not available";
+
+/* PDF DESIGN */
+doc.setFontSize(18);
+doc.text("AI Health Report", 20, 20);
+
+doc.setFontSize(12);
+
+doc.text(bmi, 20, 40);
+doc.text(calories, 20, 50);
+doc.text("Macros: "+macro, 20, 60);
+doc.text("Diet Plan: "+diet, 20, 70);
+doc.text("Workout Plan: "+workout, 20, 80);
+doc.text("Water Intake: "+water, 20, 90);
+
+doc.save("Health_Report.pdf");
+
+/* Health Risk Report download */
+let healthRisk = localStorage.getItem("healthRisk") || "Not added";
+let riskScore = localStorage.getItem("riskScore") || "-";
+let riskTips = localStorage.getItem("riskTips") || "-";
+
+doc.text("Health Risk: " + healthRisk, 20, 100);
+doc.text("Risk Score: " + riskScore, 20, 110);
+doc.text("Advice: " + riskTips, 20, 120);
+
+
+}
+
+ </script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+</body>
+</html>

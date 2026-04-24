@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthy Buddy | Health Risk</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #eef2ff; /* Home page primary background */
+    color: #333;
+}
+
+h2, h3, h4 {
+    margin: 0 0 15px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #4f46e5; /* Brand purple */
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #6366f1; /* Secondary accent */
+}
+
+/* ================= Navbar ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #4f46e5;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar h2 {
+    color: #4f46e5;
+    font-size: 1.8rem;
+}
+
+.navbar a {
+    margin-left: 20px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.navbar .download-btn {
+    background: linear-gradient(45deg, #4f46e5, #6366f1);
+    color: #fff;
+}
+
+.navbar .download-btn:hover {
+    background: linear-gradient(45deg, #6366f1, #4f46e5);
+}
+
+/* ================= Health Risk Section ================= */
+.health-risk-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.health-risk-section h2 {
+    color: #4f46e5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.form-grid input, .form-grid select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    background-color: #fafafa;
+}
+
+.form-grid input:focus, .form-grid select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 8px rgba(79,70,229,0.3);
+}
+
+.form-grid button {
+    grid-column: 1 / -1;
+    padding: 12px 0;
+    background: linear-gradient(45deg, #4f46e5, #6366f1);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #fff;
+}
+
+.form-grid button:hover {
+    background: linear-gradient(45deg, #6366f1, #4f46e5);
+}
+
+/* ================= Result Card ================= */
+.result-card {
+    display: none;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}
+
+.result-card h3 {
+    text-align: center;
+    color: #4f46e5;
+    margin-bottom: 20px;
+}
+
+/* Result Boxes */
+.result-box {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(79,70,229,0.1);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+/* Awareness & Routine */
+.section-box {
+    background-color: #fafafa;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(79,70,229,0.1);
+}
+
+.section-box h4 {
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+.section-box ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.section-box ul li {
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* Video Box */
+#videoBox iframe {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(79,70,229,0.2);
+}
+
+/* ================= Responsive ================= */
+@media screen and (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-box {
+        font-size: 0.9rem;
+    }
+}
+/*FOOTER*/
+:root {
+    --primary-color: #4f46e5; /* Brand purple */
+    --secondary-color: #6366f1; /* Accent purple */
+    --light-bg: #eef2ff; /* Soft background */
+    --light-bg2: #f8fafc; /* Section background */
+    --dark-bg: #1f1f2e; /* Navbar/Footer dark */
+    --text-color: #333;
+    --btn-hover: #6366f1;
+    --card-shadow: rgba(79,70,229,0.1);
+}
+.footer {
+    background-color: var(--dark-bg);
+    color: #e0e0e0;
+    padding: 50px 30px 20px 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-box {
+    flex: 1 1 250px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.footer-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.footer-box p {
+    line-height: 1.6;
+}
+
+.footer-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-box ul li {
+    margin-bottom: 8px;
+}
+
+.footer-box ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* SOCIAL ICONS */
+.social-icons a {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-right: 12px;
+    color: #e0e0e0;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+/* NEWSLETTER */
+.newsletter-input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    margin: 10px 0 5px 0;
+}
+
+.newsletter-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter-btn:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+/* COPYRIGHT */
+.footer-bottom {
+    border-top: 1px solid var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom a {
+    color: var(--secondary-color);
+    margin-left: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: var(--primary-color);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-box {
+        flex: 1 1 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <h2>❤️ Healthy Buddy</h2>
+    <div>
+        <a href="home.html">Home</a>
+        <a href="#" class="download-btn" onclick="downloadReport()">📄 Report</a>
+    </div>
+</header>
+
+<!-- Health Risk Section -->
+<section class="health-risk-section">
+<h2>🩺 Health Risk Analysis</h2>
+
+<div class="form-grid">
+    <input type="number" id="age" placeholder="Age">
+    <input type="number" id="bp" placeholder="Blood Pressure (mmHg)">
+    <input type="number" id="sugar" placeholder="Sugar Level (mg/dL)">
+    <select id="smoking">
+        <option value="">Smoking</option>
+        <option value="0">Non-Smoker</option>
+        <option value="1">Occasional</option>
+        <option value="2">Regular</option>
+    </select>
+    <select id="activity">
+        <option value="">Activity</option>
+        <option value="0">Active</option>
+        <option value="1">Moderate</option>
+        <option value="2">Sedentary</option>
+    </select>
+    <button onclick="analyzeRisk()">Analyze</button>
+</div>
+
+<!-- Result Card -->
+<div id="riskCard" class="result-card">
+<h3>📊 Your Health Report</h3>
+<div id="riskScore"></div>
+<div id="riskLevel"></div>
+<div id="riskTips"></div>
+
+<div id="awarenessBox"></div>
+<div id="routineBox"></div>
+<div id="videoBox"></div>
+</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-box">
+            <h2 class="footer-logo">❤️ Healthy Buddy</h2>
+            <p>Your AI Health Assistant providing personalized health insights, diet planning, and mental wellness tracking. Stay healthy, stay informed!</p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="health-risk.html">Health Risk</a></li>
+                <li><a href="symptom.html">AI Prediction</a></li>
+                <li><a href="mental-health.html">Mental Health</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#" target="_blank">🌐</a>
+                <a href="#" target="_blank">🐦</a>
+                <a href="#" target="_blank">📸</a>
+                <a href="#" target="_blank">💼</a>
+            </div>
+            <p>Subscribe for updates:</p>
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-btn">Subscribe</button>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Healthy Buddy | All Rights Reserved</p>
+        <div>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+function analyzeRisk(){
+    let age=parseInt(document.getElementById("age").value);
+    let bp=parseInt(document.getElementById("bp").value);
+    let sugar=parseInt(document.getElementById("sugar").value);
+    let smoking=document.getElementById("smoking").value;
+    let activity=document.getElementById("activity").value;
+
+    if(!age || !bp || !sugar || smoking==="" || activity===""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let score=0;
+    if(age>50) score+=2;
+    else if(age>35) score+=1;
+    if(bp>140) score+=2;
+    else if(bp>120) score+=1;
+    if(sugar>180) score+=2;
+    else if(sugar>140) score+=1;
+    score+=parseInt(smoking)+parseInt(activity);
+
+    let level, color, tips, awareness, routine, video;
+
+    if(score>=7){
+        level="High Risk"; color="red"; tips="Immediate action needed!";
+        awareness=`<div class="section-box">
+        <h4>⚠️ Awareness</h4>
+        <p>High BP and sugar can lead to heart disease, stroke, and diabetes.</p>
+        <ul>
+        <li>Monitor BP daily</li>
+        <li>Reduce sugar & processed foods</li>
+        <li>Consult doctor regularly</li>
+        <li>Maintain healthy weight</li>
+        <li>Check cholesterol periodically</li>
+        </ul></div>`;
+        routine=`<div class="section-box">
+        <h4>📅 Daily Routine</h4>
+        <ul>
+        <li>30 min morning walk</li>
+        <li>Evening yoga or meditation</li>
+        <li>Low salt meals</li>
+        <li>Drink 2-3L water</li>
+        <li>Sleep 7-8 hours</li>
+        </ul></div>`;
+        video=`<iframe width="100%" height="200" src="https://www.youtube.com/embed/UBMk30rjy0o"></iframe>`;
+    }
+    else if(score>=4){
+        level="Medium Risk"; color="orange"; tips="Lifestyle improvements needed!";
+        awareness=`<div class="section-box">
+        <h4>⚡ Awareness</h4>
+        <p>Moderate risk can become serious if ignored.</p>
+        <ul>
+        <li>Exercise 3-4 times/week</li>
+        <li>Balanced diet</li>
+        <li>Reduce stress</li>
+        <li>Monitor BP & sugar weekly</li>
+        </ul></div>`;
+        routine=`<div class="section-box">
+        <h4>📅 Routine</h4>
+        <ul>
+        <li>30 min walk daily</li>
+        <li>Light strength exercise</li>
+        <li>Drink water 2L/day</li>
+        </ul></div>`;
+        video=`<iframe width="100%" height="200" src="https://www.youtube.com/embed/ml6cT4AZdqI"></iframe>`;
+    }else{
+        level="Low Risk"; color="green"; tips="Maintain healthy lifestyle!";
+        awareness=`<div class="section-box">
+        <h4>✅ Awareness</h4>
+        <p>You are in a healthy range.</p>
+        <ul>
+        <li>Continue daily exercise</li>
+        <li>Balanced diet with fruits & veggies</li>
+        <li>Regular health checkups</li>
+        </ul></div>`;
+        routine=`<div class="section-box">
+        <h4>📅 Routine</h4>
+        <ul>
+        <li>Gym, sports, or walking</li>
+        <li>Protein-rich meals</li>
+        <li>Stay active and hydrated</li>
+        </ul></div>`;
+        video=`<iframe width="100%" height="200" src="https://www.youtube.com/embed/2pLT-olgUJs"></iframe>`;
+    }
+
+    document.getElementById("riskCard").style.display="block";
+    riskScore.innerHTML=`<h4>Score: ${score}/10</h4>`;
+    riskLevel.innerHTML=`<h3 style="color:${color}">${level}</h3>`;
+    riskTips.innerHTML=`<p>${tips}</p>`;
+    awarenessBox.innerHTML=awareness;
+    routineBox.innerHTML=routine;
+    videoBox.innerHTML=video;
+
+    /* Save for PDF */
+    localStorage.setItem("healthRisk", level);
+    localStorage.setItem("riskScore", score);
+    localStorage.setItem("riskTips", tips);
+}
+
+function downloadReport(){
+    const { jsPDF } = window.jspdf;
+    let doc = new jsPDF();
+    let risk = localStorage.getItem("healthRisk") || "-";
+    let score = localStorage.getItem("riskScore") || "-";
+    let tips = localStorage.getItem("riskTips") || "-";
+
+    doc.setFontSize(18);
+    doc.text("Healthy Buddy - Health Report", 20, 20);
+    doc.setFontSize(14);
+    doc.text("Risk Level: "+risk, 20, 40);
+    doc.text("Score: "+score+"/10", 20, 50);
+    doc.text("Advice: "+tips, 20, 60);
+
+    doc.save("Health_Report.pdf");
+}
+</script>
+
+</body>
+</html>

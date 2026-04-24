@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Healthy Buddy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+/* ==================== GLOBAL ==================== */
+:root {
+    --primary-color: #4f46e5; /* Brand purple */
+    --secondary-color: #6366f1; /* Accent purple */
+    --light-bg: #eef2ff; /* Soft background */
+    --light-bg2: #f8fafc; /* Section background */
+    --dark-bg: #1f1f2e; /* Navbar/Footer dark */
+    --text-color: #333;
+    --btn-hover: #6366f1;
+    --card-shadow: rgba(79,70,229,0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #eef2ff;
+    color: var(--text-color);
+}
+
+/* ==================== NAVBAR ==================== */
+header.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--dark-bg);
+    color: #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header.navbar h1.logo {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+header.navbar nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header.navbar nav a:hover {
+    color: var(--primary-color);
+}
+
+header.navbar a.btn, header.navbar a.download-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+header.navbar a.btn:hover,
+header.navbar a.download-btn:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+/* ==================== ABOUT SECTION ==================== */
+.about-section {
+    padding: 50px 30px;
+    background-color: var(--light-bg2);
+}
+
+.about-section h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.about-section p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.section-box {
+    background-color: var(--light-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px var(--card-shadow);
+    transition: transform 0.3s;
+}
+
+.section-box:hover {
+    transform: translateY(-5px);
+}
+
+.section-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* ==================== TERMS & PRIVACY ==================== */
+.terms-section {
+    padding: 50px 30px;
+}
+
+.terms-section h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.terms-section ul {
+    list-style-type: disc;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.terms-section li {
+    margin-bottom: 10px;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background-color: var(--dark-bg);
+    color: #e0e0e0;
+    padding: 50px 30px 20px 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-box {
+    flex: 1 1 250px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.footer-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.footer-box p {
+    line-height: 1.6;
+}
+
+.footer-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-box ul li {
+    margin-bottom: 8px;
+}
+
+.footer-box ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* SOCIAL ICONS */
+.social-icons a {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-right: 12px;
+    color: #e0e0e0;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+/* NEWSLETTER */
+.newsletter-input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    margin: 10px 0 5px 0;
+}
+
+.newsletter-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter-btn:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+/* COPYRIGHT */
+.footer-bottom {
+    border-top: 1px solid var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom a {
+    color: var(--secondary-color);
+    margin-left: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: var(--primary-color);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-box {
+        flex: 1 1 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+</Style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <h1 class="logo">❤️ Healthy Buddy</h1>
+    <nav>
+        <a href="home.html">Home</a>
+        
+    </nav>
+</header>
+
+<!-- ABOUT WEBSITE -->
+<section class="about-section">
+    <h2>About Healthy Buddy</h2>
+
+    <div class="section-box">
+        <h3>Our Mission</h3>
+        <p>
+            Healthy Buddy is your AI-powered health assistant, designed to monitor your well-being,
+            predict health risks, and provide personalized recommendations for fitness, diet, and mental health.
+            Our goal is to empower users to lead healthier, balanced lives with smart insights.
+        </p>
+    </div>
+
+    <div class="section-box">
+        <h3>Our Features</h3>
+        <ul>
+            <li>Health Risk Assessment: Monitor BP, sugar levels, lifestyle risks.</li>
+            <li>AI Prediction: Predict potential health issues based on symptoms (coming soon).</li>
+            <li>Mental Health Tracking: Stress, mood, and anxiety evaluation with suggestions.</li>
+            <li>AI Diet & Fitness Planner: Personalized calorie and macro recommendations.</li>
+            <li>Dashboard: Visualize your health data, trends, and insights.</li>
+            <li>Premium Awareness: Games, videos, and daily routines to maintain well-being.</li>
+        </ul>
+    </div>
+
+    <div class="section-box">
+        <h3>Terms & Conditions</h3>
+        <ul>
+            <li>Healthy Buddy provides guidance and recommendations, not medical diagnosis.</li>
+            <li>Users should consult certified medical professionals for serious health concerns.</li>
+            <li>All recommendations are based on the data entered by the user.</li>
+            <li>We do not guarantee any specific health outcomes.</li>
+        </ul>
+    </div>
+
+    <div class="section-box">
+        <h3>Privacy & Data Security</h3>
+        <p>
+            User data is stored securely in your browser using localStorage. We do not share personal information
+            with third parties. All data is private and used only to generate reports and personalized insights.
+        </p>
+    </div>
+
+    <div class="section-box">
+        <h3>Awareness & Tips</h3>
+        <p>
+            Maintain a healthy lifestyle by balancing physical activity, diet, and mental well-being. Check our
+            Dashboard regularly to track your progress and follow recommended routines and tips.
+        </p>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<!-- ================= UPDATED FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- LOGO & DESCRIPTION -->
+        <div class="footer-box">
+            <h2 class="footer-logo">❤️ Healthy Buddy</h2>
+            <p>Your AI Health Assistant providing personalized health insights, diet planning, and mental wellness tracking. Stay healthy, stay informed!</p>
+        </div>
+
+        <!-- QUICK LINKS -->
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="health-risk.html">Health Risk</a></li>
+                <li><a href="symptom.html">AI Prediction</a></li>
+                <li><a href="mental-health.html">Mental Health</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+
+        <!-- SOCIAL MEDIA -->
+        <div class="footer-box">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#" target="_blank">🌐</a>
+                <a href="#" target="_blank">🐦</a>
+                <a href="#" target="_blank">📸</a>
+                <a href="#" target="_blank">💼</a>
+            </div>
+            <p>Subscribe for updates:</p>
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-btn">Subscribe</button>
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+        <p>© 2026 Healthy Buddy | All Rights Reserved</p>
+        <div>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
